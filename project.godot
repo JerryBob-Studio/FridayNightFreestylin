@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Friday Night Freestylin'"
-config/version="BiWeekly1"
-run/main_scene="res://Scenes/test.tscn"
+config/version="2"
+run/main_scene="res://Scenes/Global.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Images/icon.svg"
 
@@ -22,7 +22,17 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
+[filesystem]
+
+import/blender/enabled=false
+import/fbx/enabled=false
+
+[importer_defaults]
+
+texture={
+"detect_3d/compress_to": 0
+}
+
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

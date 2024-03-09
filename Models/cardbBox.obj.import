@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://buugs7gol782d"
+path="res://.godot/imported/cardbBox.obj-d54ad1282d6015a640dae8a8b6a3c36f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cardbBox.obj-d54ad1282d6015a640dae8a8b6a3c36f.mesh"]
+
+source_file="res://Models/cardbBox.obj"
+dest_files=["res://.godot/imported/cardbBox.obj-d54ad1282d6015a640dae8a8b6a3c36f.mesh", "res://.godot/imported/cardbBox.obj-d54ad1282d6015a640dae8a8b6a3c36f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://nj0e1auni6p"]
+
+[ext_resource type="Script" path="res://Scripts/UIButton.gd" id="1_yew1a"]
+[ext_resource type="PackedScene" uid="uid://c3m4vp3kwupwx" path="res://Scenes/UI/text.tscn" id="2_6lya3"]
+
+[node name="Button" type="Button"]
+self_modulate = Color(1, 1, 1, 0.752941)
+offset_left = 704.0
+offset_top = 584.0
+offset_right = 1216.0
+offset_bottom = 712.0
+flat = true
+icon_alignment = 1
+script = ExtResource("1_yew1a")
+fnc = "Play"
+txt = "START"
+siz = 0.4
+
+[node name="Text" parent="." instance=ExtResource("2_6lya3")]
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

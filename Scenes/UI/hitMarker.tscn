@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwgyesherf2qe"]
+
+[ext_resource type="Texture2D" uid="uid://dym2e2yrjlwht" path="res://Images/UI/hitShapes1.png" id="1_33cq4"]
+[ext_resource type="Texture2D" uid="uid://dfr42mm1m1j8y" path="res://Images/UI/hitShapes2.png" id="2_6d6rh"]
+[ext_resource type="Texture2D" uid="uid://c8jnrv1hlj1op" path="res://Images/UI/hitShapes3.png" id="3_vl06t"]
+[ext_resource type="Texture2D" uid="uid://cek22c0qy11k7" path="res://Images/UI/font.png" id="4_epr4p"]
+
+[node name="HitMarker" type="Node2D"]
+
+[node name="HitMarker1" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+z_index = 11
+texture = ExtResource("1_33cq4")
+hframes = 2
+vframes = 2
+
+[node name="HitMarker2" type="Sprite2D" parent="."]
+z_index = 12
+texture = ExtResource("2_6d6rh")
+hframes = 2
+vframes = 2
+
+[node name="HitMarker3" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+z_index = 13
+texture = ExtResource("3_vl06t")
+hframes = 2
+vframes = 2
+
+[node name="Key" type="Sprite2D" parent="."]
+z_index = 14
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_epr4p")
+hframes = 8
+vframes = 8
+frame = 31

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://k5kyn6fxubur"
+path="res://.godot/imported/Test chop 0.wav-4ca989b0a375fac4106008a6e6dd6b16.sample"
+
+[deps]
+
+source_file="res://Levels/Test/Test chop 0.wav"
+dest_files=["res://.godot/imported/Test chop 0.wav-4ca989b0a375fac4106008a6e6dd6b16.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

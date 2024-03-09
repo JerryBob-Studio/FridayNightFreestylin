@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ddiok50i8v50r"]
+
+[ext_resource type="Shader" path="res://Shaders/MenuBG.gdshader" id="1_t4cii"]
+
+[resource]
+shader = ExtResource("1_t4cii")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3m4vp3kwupwx"]
+
+[ext_resource type="TileSet" uid="uid://b0evc31pq5v7t" path="res://Materials/fontTiles.tres" id="1_hqa5m"]
+
+[node name="Text" type="TileMap"]
+tile_set = ExtResource("1_hqa5m")
+format = 2

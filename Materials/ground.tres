@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://se5fm1fc8cwu"]
+
+[ext_resource type="Texture2D" uid="uid://dgf065jv3hemi" path="res://Images/Textures/noise1.png" id="1_sadc0"]
+
+[resource]
+albedo_color = Color(0.25098, 0.25098, 0.25098, 1)
+albedo_texture = ExtResource("1_sadc0")
+roughness = 0.95
+uv1_scale = Vector3(1.6, 48, 1)
+uv1_triplanar = true

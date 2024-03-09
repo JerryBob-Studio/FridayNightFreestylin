@@ -1,33 +1,19 @@
-extends Node2D
-
-#BUGS
-#Queued press counts as freestyle press;
-#queue is probably a bad idea anyway
+extends "res://Scripts/Generic.gd"
 
 #DEBUG
 var DEBUG_HITSCORE = false
 
 #Objects
-var Generic = preload("res://Scripts/Generic.gd").new()
-var hostPlayhead = Generic.createBox(360, 54, 5, 72, Color(1, 0, 0), self)
-var remixerPlayhead = Generic.createBox(360, 130, 5, 72, Color(0, 1, 1), self)
+@onready var hostPlayhead = createBox(360, 54, 5, 72, Color(1, 0, 0), $UI)
+@onready var remixerPlayhead = createBox(360, 130, 5, 72, Color(0, 1, 1), $UI)
 
 #Player settings
-var keybinds = "QWEASDRTYFGH"
-var numKeys = 6
-var keyCols = [
-	0.01, 0.04, 0.14,
-	0.27, 0.54, 0.76
-]
-var keyTypes = [
-	1, 2, 0,
-	1, 2, 0
-]
+@onready var keybinds = "AZEQSD" if get_node("/root/Global").azerty else "QWEASD"
 
 #Song
 var songName = "Test"
 var bpm = 86.
-var offset = 0
+var offset = 0 #Offset in sections
 var sections = [
 	"3 4   1 ",
 	"3333 5 3",
@@ -35,10 +21,14 @@ var sections = [
 	"3333 5 3",
 	" "
 ]
+var keyHues = globalUIHues
+var keyTypes = [
+	1, 2, 0,
+	1, 2, 0
+]
 
 #Samples
 var sounds = []
-var soundSet = 0
 
 #Current beat
 var beats = 0
@@ -84,22 +74,20 @@ func calcHitScore(time):
 		result *= pow(abs(sin(time / pow(2, i - 1) * PI)), 2.)
 	result *= amt
 	result = 1. - result
-	if result < 0.3:
-		result *= 1.25
 	return result
 
 func canPlay():
 	return sectionNum >= offset and sectionNum < len(sections)
 
 func hit(soundStream, key):
-	Generic.createHitMarker(timelinePos, 54 if hostTurn else 130, 0.5, keyCols[key], keyTypes[key], getFontIndex(keybinds[key]), $HitMarkers)
+	createHitMarker(timelinePos, 54 if hostTurn else 130, 0.5, globalUIColour(keyHues[key]), keyTypes[key], getFontIndex(keybinds[key]), $UI/HitMarkers)
 	soundStream.stream = sounds[key]
 	soundStream.play()
 
+#CLEANUP: This shit looks nasty af
 func hitRemixer(key):
-	hit($RemixerSounds, key)
-	
 	var hitScore = calcHitScore(beatsFloat * 2)
+	var hitUIType = -1
 	
 	if key == lastKey or lastKey == -1:
 		lastRepeat += 1
@@ -107,35 +95,34 @@ func hitRemixer(key):
 		lastRepeat = 1
 		lastKey = -1
 	
+	#Copying the host
 	if curSection[beatsClosest] == str(key) and not remixerHits[beatsClosest]:
-		sectionScore += hitScore / 10. + 0.9
+		sectionScore += hitScore / 2.5 + 0.5
 		remixerHits[beatsClosest] = true
-		Generic.createHitScore(960, 540, 1., 1 if hitScore > 0 else 0, self)
+		hitUIType = 1 if hitScore > 0.5 else 0
+	
+	#Freestyling!
 	else:
-		#Freshness
 		var freshness = 0
-		if (beatsFloat - lastHitTime) < 0.02 and lastHitTime != -1:
-			freshness = -4.2069
-		elif key != lastKey or lastKey == -1:
-			freshness = 1.25
+		if (beatsFloat - lastHitTime) < 0.075 and lastHitTime != -1:
+			freshness = -0.69
 		else:
-			freshness = 1. / lastRepeat
+			freshness = 1.1 / lastRepeat
 		
-		Generic.createHitScore(960, 540, 1., 3 if freshness < 0.2 else (2 if hitScore > 0 else 0), self)
-		
+		hitUIType = 3 if freshness < 0.2 else (2 if hitScore > 0 else 0)
 		hitScore *= freshness / (alterHits + 1.)
 		sectionScore += hitScore
 		
 		if curSection[beatsClosest] != " ":
 			alterHits += 1
 	
+	hit($RemixerSounds, key)
+	createHitScore(960, 540, 0.5, hitUIType, $UI)
+	
 	if lastKey == -1:
 		lastKey = key
 	queuePress = -1
 	lastHitTime = beatsFloat
-
-func getFontIndex(c):
-	return c.unicode_at(0) - 32
 
 func nextSection():
 	if not hostTurn and sectionNum < len(sections) - 1:
@@ -153,7 +140,7 @@ func nextSection():
 	hostTurn = !hostTurn
 
 func resetInputs():
-	for i in $HitMarkers.get_children():
+	for i in $UI/HitMarkers.get_children():
 		i.queue_free()
 	
 	remixerHits = []
@@ -166,53 +153,41 @@ func resetInputs():
 	alterHits = 0
 	hostLastHit = -1
 
-func uiLerpVal(val, txt, speed):
-	return (val - txt) * speed
-
 func updatePlayheads():
 	timelinePos = 360 + beatsFloat / len(curSection) * 1200
 	hostPlayhead.position.x = timelinePos + (0 if hostTurn else 1200)
 	remixerPlayhead.position.x = timelinePos - 1200 + (0 if hostTurn else 1200)
 	if DEBUG_HITSCORE:
-		Generic.createBox(timelinePos, 90, 8, 150, Color(1. - calcHitScore(beatsFloat * 2), calcHitScore(beatsFloat * 2), 0, 1.), self)
+		createBox(timelinePos, 90, 8, 150, Color(1. - calcHitScore(beatsFloat * 2), calcHitScore(beatsFloat * 2), 0, 1.), $UI)
 
 func updateEPICNESS():
-	$HostEpicnessBox.scale.y = (1. - epicnessUI) * 256.
-	$RemixerEpicnessBox.scale.y = epicnessUI * 256.
-
-func updateText(obj, txt, x, y, s):
-	for i in len(txt):
-		var fontIndex = getFontIndex(txt[i])
-		obj.set_cell(0, Vector2i(i, 0), 1, Vector2i(fontIndex % 8, fontIndex / 8))
-	obj.position.x = x - len(txt) * 256. * s / 2.
-	obj.position.y = y
-	obj.scale = Vector2(s, s)
+	$UI/HostEpicnessBox.scale.y = (1. - epicnessUI) * 256.
+	$UI/RemixerEpicnessBox.scale.y = epicnessUI * 256.
 
 func updateUI():
-	scoreUI += uiLerpVal(score, scoreUI, 0.1)
-	epicnessUI += uiLerpVal(EPICNESS, epicnessUI, 0.1)
+	scoreUI = uiLerpVal(score, scoreUI, 0.1)
+	epicnessUI = uiLerpVal(EPICNESS, epicnessUI, 0.1)
 	updatePlayheads()
 	updateEPICNESS()
-	updateText($ScoreText, "SCORE " + str(int(scoreUI * 10.)), 960, 1080 - 96, 0.1333)
+	updateText($UI/ScoreText, "SCORE " + str(int(ceil(scoreUI * 10.))), 960, 1080 - 96, 0.1667)
 
 #----
 
 func _ready():
-	$Music.stream = load("res://" + songName + "/" + songName + " song.ogg")
+	$Music.stream = load("res://Levels/" + songName + "/" + songName + " song.ogg")
 	
-	#Load key samples and key colours
-	for key in numKeys:
-		sounds.append(load("res://" + songName + "/set " + str(soundSet) + "/" + songName + " chop " + str(key) + ".wav"))
-		keyCols[key] = Color.from_hsv(keyCols[key], 0.65, 0.82)
+	#Load samples
+	for key in len(keybinds):
+		sounds.append(load("res://Levels/" + songName + "/" + songName + " chop " + str(key) + ".wav"))
 	
 	#Timeline lines
 	var totalLines = 32
 	for i in totalLines:
 		var pos = 360 + i * 1200. / totalLines
-		if   i % 8 == 0: Generic.createBox(pos, 90, 8, 150, Color(0, 0, 0), self)
-		elif i % 8 == 4: Generic.createBox(pos, 90, 5, 150, Color(0, 0, 0, 0.75), self)
-		elif i % 8 == 2 or i % 8 == 6: Generic.createBox(pos, 90, 3, 150, Color(0, 0, 0, 0.5), self)
-		else: Generic.createBox(pos, 90, 2, 150, Color(0, 0, 0, 0.25), self)
+		if   i % 8 == 0: createBox(pos, 90, 8, 150, Color(0, 0, 0), $UI)
+		elif i % 8 == 4: createBox(pos, 90, 5, 150, Color(0, 0, 0, 0.75), $UI)
+		elif i % 8 == 2 or i % 8 == 6: createBox(pos, 90, 3, 150, Color(0, 0, 0, 0.5), $UI)
+		else: createBox(pos, 90, 2, 150, Color(0, 0, 0, 0.25), $UI)
 	
 	resetInputs()
 
@@ -234,6 +209,9 @@ func _process(delta):
 	if beats >= len(sections[sectionNum]):
 		nextSection()
 	
+	#Rotate record at 45 RPM
+	$"Record Player/Record".rotation.y = -$Music.get_playback_position() * PI * 45. / 60.
+	
 	if canPlay():
 		updateUI()
 		
@@ -246,12 +224,17 @@ func _process(delta):
 		#Remixer queued press
 		if canPlay() and not hostTurn and queuePress != -1:
 			hitRemixer(queuePress)
+	
+	if not $Music.playing and EPICNESS > 0.5:
+		nextLevel()
+	else:
+		gameover()
 
 #----
 
 func _input(e):
 	#Remixer hit
-	for key in numKeys:
+	for key in len(keybinds):
 		if e is InputEventKey and Input.is_key_pressed(OS.find_keycode_from_string(keybinds[key])) and e.is_pressed() and not e.echo:
 			if canPlay() and not hostTurn:
 				hitRemixer(key)

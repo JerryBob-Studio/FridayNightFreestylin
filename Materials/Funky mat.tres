@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://lpa13b2lm2o5"]
+
+[ext_resource type="Shader" path="res://Shaders/Funky!.gdshader" id="1_hm1tn"]
+
+[resource]
+shader = ExtResource("1_hm1tn")

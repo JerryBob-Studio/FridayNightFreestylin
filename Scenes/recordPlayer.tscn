@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://tsg16dhft6ni"]
+
+[ext_resource type="Texture2D" uid="uid://c500q3fds7a36" path="res://Images/record.png" id="1_8yv28"]
+[ext_resource type="Texture2D" uid="uid://tus8bwjewfdn" path="res://Images/icon.svg" id="2_obg7k"]
+[ext_resource type="Material" uid="uid://l1omcuxvsr12" path="res://Materials/wud.tres" id="3_s3lp0"]
+[ext_resource type="Texture2D" uid="uid://chppjntp02np" path="res://Images/pixel.png" id="4_1lqnh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i0hd1"]
+size = Vector3(3, 0.125, 3)
+
+[node name="RecordPlayer" type="Node3D"]
+
+[node name="Record" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0655918, 0)
+axis = 1
+texture = ExtResource("1_8yv28")
+
+[node name="RecordLabel" type="Sprite3D" parent="Record"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.000999995, 0)
+axis = 1
+transparent = false
+texture = ExtResource("2_obg7k")
+
+[node name="Weird uh wood thing huh!???" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_s3lp0")
+mesh = SubResource("BoxMesh_i0hd1")
+
+[node name="RecordPlayhead" type="Sprite3D" parent="."]
+transform = Transform3D(9.2388, 0, -65.8216, 0, 1, 0, 3.82683, 0, 158.907, 1, 0.07, -0.405)
+modulate = Color(0.0941176, 0.0941176, 0.0941176, 1)
+axis = 1
+transparent = false
+texture = ExtResource("4_1lqnh")

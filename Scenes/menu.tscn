@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1fvarkgqcemv"]
+
+[ext_resource type="AudioStream" uid="uid://bjdegv0mvruo6" path="res://Audio/Music/main.ogg" id="1_7nhgw"]
+[ext_resource type="AudioStream" uid="uid://bbdffk0lstvps" path="res://Audio/Sfx/Confirm.wav" id="2_f6jdi"]
+[ext_resource type="Material" uid="uid://ddiok50i8v50r" path="res://Materials/MenuBG.tres" id="3_fw0rs"]
+[ext_resource type="Texture2D" uid="uid://b1my6e0nfve75" path="res://Images/bg1.png" id="4_jlrqx"]
+[ext_resource type="PackedScene" uid="uid://nj0e1auni6p" path="res://Scenes/UI/button.tscn" id="5_xvvik"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_7nhgw")
+volume_db = -20.0
+autoplay = true
+
+[node name="MenuSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_f6jdi")
+volume_db = -20.0
+
+[node name="BG" type="Sprite2D" parent="."]
+material = ExtResource("3_fw0rs")
+position = Vector2(960, 540)
+texture = ExtResource("4_jlrqx")
+
+[node name="Start" parent="." instance=ExtResource("5_xvvik")]
+
+[node name="Exit" parent="." instance=ExtResource("5_xvvik")]
+offset_top = 800.0
+offset_bottom = 928.0
+fnc = "Exit"
+txt = "EXIT"
