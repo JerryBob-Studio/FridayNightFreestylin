@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cblh6au5kaa17"]
-
-[ext_resource type="Texture2D" uid="uid://rnhjgvf34aei" path="res://Images/pixel.png" id="1_f5of5"]
-
-[node name="Box" type="Sprite2D"]
-z_index = 1
-texture = ExtResource("1_f5of5")
