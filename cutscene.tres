@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://di1dtmi7e52fx"]
+
+[ext_resource type="Texture2D" uid="uid://nc13ac78ifsj" path="res://Images/Noise/noise1.png" id="1_gb3do"]
+[ext_resource type="Texture2D" uid="uid://knt1aqqv0xm6" path="res://Images/Noise/noise2.png" id="2_8oagy"]
+[ext_resource type="Texture2D" uid="uid://df2smrn0okw8j" path="res://Images/Noise/noise3.png" id="3_ytx7m"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gb3do")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8oagy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ytx7m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]

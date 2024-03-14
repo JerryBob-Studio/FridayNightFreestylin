@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: Blender, SVG Export for Grease Pencil - v1.0 -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.0" x="0px" y="0px" xmlns="http://www.w3.org/2000/svg" width="119px" height="199px" viewBox="0 0 119 199">
+	<g id="blender_frame_1">
+		<g id="blender_object_Stroke">
+			<!--Layer: 0-->
+			<g id="0">
+				<polygon fill="#000000" stroke="none" fill-opacity="1" points="70.031982,10.000000 27.785767,22.740967 84.114014,50.234497" />
+				<polygon stroke="#FEFEFE" stroke-opacity="1" fill="none" stroke-linecap="round" stroke-width="15.1186523" points="70.031982,10.000000 27.785767,22.740967 84.114014,50.234497" />
+				<polygon fill="#000000" stroke="none" fill-opacity="1" points="63.472168,120.079834 58.461426,157.734375 10.000000,171.149048 79.069092,189.254517 109.244995,128.902832" />
+				<polygon stroke="#FEFEFE" stroke-opacity="1" fill="none" stroke-linecap="round" stroke-width="15.1186523" points="63.472168,120.079834 58.461426,157.734375 10.000000,171.149048 79.069092,189.254517 109.244995,128.902832" />
+			</g>
+		</g>
+	</g>
+</svg>

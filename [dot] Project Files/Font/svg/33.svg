@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: Blender, SVG Export for Grease Pencil - v1.0 -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.0" x="0px" y="0px" xmlns="http://www.w3.org/2000/svg" width="246px" height="234px" viewBox="0 0 246 234">
+	<g id="blender_frame_1">
+		<g id="blender_object_Stroke">
+			<!--Layer: 0-->
+			<g id="0">
+				<polygon fill="#000000" stroke="none" fill-opacity="1" points="68.757507,20.471680 47.814209,107.735352 22.992554,115.621338 11.829163,150.239624 46.734619,147.279419 10.000000,224.264648 70.696655,212.509888 92.609558,151.948975 156.603027,151.948975 199.885803,210.473755 236.303833,206.052368 127.282410,10.000000" />
+				<polygon stroke="#FEFEFE" stroke-opacity="1" fill="none" stroke-linecap="round" stroke-width="15.1186523" points="68.757507,20.471680 47.814209,107.735352 22.992554,115.621338 11.829163,150.239624 46.734619,147.279419 10.000000,224.264648 70.696655,212.509888 92.609558,151.948975 156.603027,151.948975 199.885803,210.473755 236.303833,206.052368 127.282410,10.000000" />
+				<polygon fill="#000000" stroke="none" fill-opacity="1" points="82.617371,83.592407 124.040649,106.313232 119.047241,58.447510" />
+				<polygon stroke="#FEFEFE" stroke-opacity="1" fill="none" stroke-linecap="round" stroke-width="15.1188965" points="82.617371,83.592407 124.040649,106.313232 119.047241,58.447510" />
+			</g>
+		</g>
+	</g>
+</svg>
