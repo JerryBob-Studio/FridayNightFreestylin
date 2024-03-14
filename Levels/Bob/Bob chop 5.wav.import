@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://e633gswutuxh"
+path="res://.godot/imported/Bob chop 5.wav-42f4fb7d51d0312a8ba4a54c6ec7bc39.sample"
+
+[deps]
+
+source_file="res://Levels/Bob/Bob chop 5.wav"
+dest_files=["res://.godot/imported/Bob chop 5.wav-42f4fb7d51d0312a8ba4a54c6ec7bc39.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

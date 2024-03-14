@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cef726hpa03r7"
+path="res://.godot/imported/Stef song.ogg-6339b69122d8e61297c6e982061f3657.oggvorbisstr"
+
+[deps]
+
+source_file="res://Levels/Stef/Stef song.ogg"
+dest_files=["res://.godot/imported/Stef song.ogg-6339b69122d8e61297c6e982061f3657.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

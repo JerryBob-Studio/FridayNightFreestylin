@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://tsg16dhft6ni"]
+[gd_scene load_steps=8 format=3 uid="uid://tsg16dhft6ni"]
 
 [ext_resource type="Texture2D" uid="uid://c500q3fds7a36" path="res://Images/record.png" id="1_8yv28"]
 [ext_resource type="Texture2D" uid="uid://tus8bwjewfdn" path="res://Images/icon.svg" id="2_obg7k"]
 [ext_resource type="Material" uid="uid://l1omcuxvsr12" path="res://Materials/wud.tres" id="3_s3lp0"]
 [ext_resource type="Texture2D" uid="uid://chppjntp02np" path="res://Images/pixel.png" id="4_1lqnh"]
+[ext_resource type="Material" uid="uid://brwkqcdq3p0sx" path="res://Materials/speaker thing.tres" id="4_yn3v7"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_i0hd1"]
 size = Vector3(3, 0.125, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dkeh4"]
+size = Vector3(6, 2.4, 3.5)
 
 [node name="RecordPlayer" type="Node3D"]
 
@@ -24,6 +28,11 @@ texture = ExtResource("2_obg7k")
 [node name="Weird uh wood thing huh!???" type="MeshInstance3D" parent="."]
 material_override = ExtResource("3_s3lp0")
 mesh = SubResource("BoxMesh_i0hd1")
+
+[node name="Speaker maybe" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.26, 0.05)
+material_override = ExtResource("4_yn3v7")
+mesh = SubResource("BoxMesh_dkeh4")
 
 [node name="RecordPlayhead" type="Sprite3D" parent="."]
 transform = Transform3D(9.2388, 0, -65.8216, 0, 1, 0, 3.82683, 0, 158.907, 1, 0.07, -0.405)

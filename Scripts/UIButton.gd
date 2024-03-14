@@ -4,40 +4,34 @@ extends "res://Scripts/Generic.gd"
 @export var txt = ""
 @export var siz = 1.
 
-func loadMenu():
-	get_tree().root.add_child(load("res://Scenes/menu.tscn").instantiate())
-	get_node("/root/Global/Keyboard").queue_free()
-
 func snd():
-	$"../Music".stop()
-	$"../MenuSfx".play()
+	var curScene = get_tree().root.get_child(1) #HACK, but I ain't fixin' it.
+	curScene.get_node("Music").stop()
+	curScene.get_node("Confirm").play()
 
 func _ready():
 	updateText(self.get_child(0), txt, self.size.x / 2., self.size.y / 2., siz)
 
 func _on_pressed():
+	var curScene = get_tree().root.get_child(1) #Exact same stinky HACK, still not fixin' it.
 	match fnc:
 		#Menu
 		"Play":
 			snd()
-			await get_tree().create_timer(2.8).timeout
-			get_node("/root/Global").add_child(load("res://Scenes/gameplayMain.tscn").instantiate())
-			get_node("/root/Menu").queue_free()
-		
+			await get_tree().create_timer(4.).timeout
+			loadScene("funkin", curScene)
 		#Game Over
 		"Retry":
-			get_tree().reload_current_scene()
-		
-		#Keyboard
+			snd()
+			await get_tree().create_timer(4.).timeout
+			loadScene("gameplayMain", curScene)
 		"QWERTY":
 			Global.azerty = false
-			loadMenu()
+			loadScene("menu", curScene)
 		"AZERTY":
 			Global.azerty = true
-			loadMenu()
-		
-		#Generic
+			loadScene("menu", curScene)
 		"Exit":
 			snd()
-			await get_tree().create_timer(2.8).timeout
+			await get_tree().create_timer(4.).timeout
 			get_tree().quit()

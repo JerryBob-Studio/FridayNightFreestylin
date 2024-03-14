@@ -10,14 +10,13 @@
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_7nhgw")
-volume_db = -20.0
 autoplay = true
 
-[node name="MenuSfx" type="AudioStreamPlayer" parent="."]
+[node name="Confirm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_f6jdi")
-volume_db = -20.0
 
 [node name="BG" type="Sprite2D" parent="."]
+z_index = -1000
 material = ExtResource("3_fw0rs")
 position = Vector2(960, 540)
 texture = ExtResource("4_jlrqx")

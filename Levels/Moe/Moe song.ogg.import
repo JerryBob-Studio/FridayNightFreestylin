@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c08nqhaptw2n4"
+path="res://.godot/imported/Moe song.ogg-8551cdf4beb7b82b0f597f8278de8c01.oggvorbisstr"
+
+[deps]
+
+source_file="res://Levels/Moe/Moe song.ogg"
+dest_files=["res://.godot/imported/Moe song.ogg-8551cdf4beb7b82b0f597f8278de8c01.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

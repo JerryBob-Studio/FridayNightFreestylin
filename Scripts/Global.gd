@@ -1,9 +1,16 @@
 extends "res://Scripts/Generic.gd"
 
-@export var azerty = false
-@export var level = 0
+var DEBUG_SKIPTOGAMEPLAY = false
+
+var azerty = false
+var keybinds = "AZEQSD" if azerty else "QWEASD"
+var fnfKeybinds1 = "QSZD" if azerty else "ASWD"
+var fnfKeybinds2 = [KEY_LEFT, KEY_DOWN, KEY_UP, KEY_RIGHT]
+
+var level = 0
 
 func _ready():
-	var kbd = load("res://Scenes/keyboard.tscn").instantiate()
-	self.add_child(kbd)
-	updateText(kbd.get_child(0), "SELECT KEYBOARD TYPE.", 960., 360., 0.3)
+	if DEBUG_SKIPTOGAMEPLAY:
+		loadScene("gameplayMain", false)
+	else:
+		loadScene("keyboard", false)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://78vga4fdfqq4"]
+
+[ext_resource type="Texture2D" uid="uid://chppjntp02np" path="res://Images/pixel.png" id="1_8vqyy"]
+[ext_resource type="PackedScene" uid="uid://c3m4vp3kwupwx" path="res://Scenes/UI/text.tscn" id="2_xcarr"]
+[ext_resource type="PackedScene" uid="uid://nj0e1auni6p" path="res://Scenes/UI/button.tscn" id="3_157r5"]
+
+[node name="GameOver" type="CanvasLayer"]
+layer = 2
+offset = Vector2(960, 540)
+transform = Transform2D(1, 0, 0, 1, 960, 540)
+
+[node name="BG" type="Sprite2D" parent="."]
+self_modulate = Color(0.501961, 0.501961, 0.501961, 0.752941)
+z_index = -100
+scale = Vector2(1792, 1008)
+skew = 0.394444
+texture = ExtResource("1_8vqyy")
+
+[node name="YouSuckAssBro" parent="." instance=ExtResource("2_xcarr")]
+
+[node name="Retry" parent="." instance=ExtResource("3_157r5")]
+offset_left = -256.0
+offset_top = 104.0
+offset_right = 256.0
+offset_bottom = 232.0
+fnc = "Retry"
+txt = "RETRY"
+
+[node name="Exit" parent="." instance=ExtResource("3_157r5")]
+offset_left = -256.0
+offset_top = 272.0
+offset_right = 256.0
+offset_bottom = 400.0
+fnc = "Exit"
+txt = "EXIT"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbmhwqyqo3p84"]
+[gd_scene load_steps=19 format=3 uid="uid://dbmhwqyqo3p84"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay.gd" id="1_rhgma"]
 [ext_resource type="Texture2D" uid="uid://chppjntp02np" path="res://Images/pixel.png" id="2_rrej1"]
@@ -11,9 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://bdta6lqf3etfo" path="res://Images/bfFace.png" id="8_rqvy6"]
 [ext_resource type="Material" uid="uid://se5fm1fc8cwu" path="res://Materials/ground.tres" id="9_wjw05"]
 [ext_resource type="Material" uid="uid://y0ej0xn4hm8r" path="res://Materials/walls.tres" id="10_4hc7l"]
+[ext_resource type="Texture2D" uid="uid://c26ash1dg6pd" path="res://Levels/Bob/Bob body.png" id="10_c8qry"]
 [ext_resource type="ArrayMesh" uid="uid://buugs7gol782d" path="res://Models/cardbBox.obj" id="10_ri0yp"]
 [ext_resource type="ArrayMesh" uid="uid://cb6uoohmbtp3r" path="res://Models/trash.obj" id="11_0r76k"]
 [ext_resource type="Material" uid="uid://d3lti1ja1bkxm" path="res://Materials/cardbBox.tres" id="11_16wup"]
+[ext_resource type="Texture2D" uid="uid://cihex85wexsnf" path="res://Levels/Bob/Bob face.png" id="11_r74y1"]
 [ext_resource type="Material" uid="uid://cb6xg20gbewb4" path="res://Materials/trash.tres" id="13_f6eae"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gdk4f"]
@@ -38,19 +40,19 @@ scale = Vector2(1203, 150)
 texture = ExtResource("2_rrej1")
 
 [node name="RemixerEpicnessBox" type="Sprite2D" parent="UI"]
-self_modulate = Color(0.509083, 0.82, 0.287, 0.878431)
+self_modulate = Color(0.258824, 0.780392, 0.780392, 0.878431)
 material = ExtResource("3_rpemf")
-position = Vector2(932, 1064)
-scale = Vector2(60, 200)
+position = Vector2(884, 1064)
+scale = Vector2(128, 200)
 skew = 0.0349065
 texture = ExtResource("2_rrej1")
 offset = Vector2(0, -0.5)
 
 [node name="HostEpicnessBox" type="Sprite2D" parent="UI"]
-self_modulate = Color(0.82, 0.322533, 0.287, 0.878431)
+self_modulate = Color(0.78, 0.29224, 0.2574, 0.878431)
 material = ExtResource("3_rpemf")
-position = Vector2(988, 1064)
-scale = Vector2(64, 200)
+position = Vector2(1036, 1064)
+scale = Vector2(128, 200)
 skew = -0.0872667
 texture = ExtResource("2_rrej1")
 offset = Vector2(0, -0.5)
@@ -60,19 +62,21 @@ offset = Vector2(0, -0.5)
 [node name="ScoreText" parent="UI" instance=ExtResource("5_xgp1a")]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-volume_db = -20.0
+volume_db = -4.0
+
+[node name="Sfx" type="AudioStreamPlayer" parent="."]
 
 [node name="HostSounds" type="AudioStreamPlayer" parent="."]
-volume_db = -24.0
+volume_db = -4.0
 
 [node name="RemixerSounds" type="AudioStreamPlayer" parent="."]
-volume_db = -24.0
+volume_db = -4.0
 
 [node name="BeatTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 4.333)
 keep_aspect = 0
 current = true
 size = 16.714
@@ -89,19 +93,53 @@ light_energy = 4.0
 shadow_enabled = true
 omni_range = 32.0
 
-[node name="BF" type="Sprite3D" parent="."]
-transform = Transform3D(0.517024, 0, 0.0911653, 0, 0.525, 0, -0.0911653, 0, 0.517024, -1.4, 1.275, 0)
+[node name="Remixer" type="Sprite3D" parent="."]
+transform = Transform3D(0.25605, 0, 0.0451485, 0, 0.26, 0, -0.0451485, 0, 0.25605, -1.4, 1.3, 0)
+cast_shadow = 0
+no_depth_test = true
 alpha_cut = 2
 texture = ExtResource("8_oh6kl")
-hframes = 4
+hframes = 2
 vframes = 2
 
-[node name="BfFace" type="Sprite3D" parent="BF"]
+[node name="RemixerFace" type="Sprite3D" parent="Remixer"]
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0.00999996)
 cast_shadow = 0
+no_depth_test = true
 texture = ExtResource("8_rqvy6")
 hframes = 4
 vframes = 4
+
+[node name="RemixerShadow" type="Sprite3D" parent="Remixer"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+cast_shadow = 3
+alpha_cut = 2
+texture = ExtResource("8_oh6kl")
+hframes = 2
+vframes = 2
+
+[node name="Host" type="Sprite3D" parent="."]
+transform = Transform3D(0.295442, 0, -0.0520945, 0, 0.3, 0, 0.0520945, 0, 0.295442, 1.4, 1.3, -0.25)
+cast_shadow = 0
+no_depth_test = true
+alpha_cut = 2
+texture = ExtResource("10_c8qry")
+hframes = 2
+vframes = 2
+
+[node name="HostFace" type="Sprite3D" parent="Host"]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0, 0, 0.00999996)
+cast_shadow = 0
+texture = ExtResource("11_r74y1")
+hframes = 2
+vframes = 2
+
+[node name="HostShadow" type="Sprite3D" parent="Host"]
+cast_shadow = 3
+alpha_cut = 2
+texture = ExtResource("10_c8qry")
+hframes = 2
+vframes = 2
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(6.4, 0, 0, 0, -8.39259e-06, 1, 0, -192, -4.37114e-08, 0, 0, 0)
@@ -120,7 +158,7 @@ material_override = ExtResource("10_4hc7l")
 mesh = SubResource("QuadMesh_gdk4f")
 
 [node name="Record Player" parent="." instance=ExtResource("6_k6cvd")]
-transform = Transform3D(0.333, 0, 0, 0, 0.333, 0, 0, 0, 0.333, 0, 1, -2)
+transform = Transform3D(0.333, 0, 0, 0, 0.333, 0, 0, 0, 0.333, 0, 0.833, -2.75)
 
 [node name="CardbBox" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.304615, 0, -0.259248, 0, 0.4, 0, 0.259248, 0, 0.304615, -2.555, 0.4, -7)

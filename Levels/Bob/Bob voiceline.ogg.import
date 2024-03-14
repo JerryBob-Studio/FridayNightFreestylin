@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dwit1wsdtdlqu"
+path="res://.godot/imported/Bob voiceline.ogg-2b132136f4e99e592888d2fb708842c9.oggvorbisstr"
+
+[deps]
+
+source_file="res://Levels/Bob/Bob voiceline.ogg"
+dest_files=["res://.godot/imported/Bob voiceline.ogg-2b132136f4e99e592888d2fb708842c9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
